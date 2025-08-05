@@ -1,0 +1,239 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:wght@400;500;600;700;800;900&display=swap');
+
+.github-dashboard {
+  display: flex;
+  font-family: 'Segoe UI', sans-serif;
+  margin-top: 4%;
+  width: 80vw;
+  font-family:  "Poppins", sans-serif;
+}
+
+/* Sidebar */
+.github-sidebar {
+  position: fixed;
+  top: 10%;
+  left: 0;
+  width: 260px;
+  height: calc(100vh - 10%);
+  background-color: #fff;
+  padding: 2rem 1.5rem;
+  border-right: 1px solid #d0d7de;
+  text-align: center;
+  box-shadow: 1px 0 4px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+}
+
+.profile-container {
+  position: relative;
+  width: 180px;
+  height: 180px;
+}
+
+.profile-pic {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #d0d7de;
+}
+
+.pencil-icon {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  height: 30px;
+  width: 30px;
+  background: #fff;
+  border-radius: 50%;
+  padding: 4px;
+  font-size: 0.9rem;
+  color: #2563eb;
+  border: 1px solid #d0d7de;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.pencil-icon:hover {
+  background-color: #2563eb;
+  color: white;
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-top: 1rem;
+}
+
+.profile-option {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border 0.3s ease;
+}
+
+.profile-option:hover {
+  border-color: #2563eb;
+}
+
+.profile-option.selected {
+  border-color: #2563eb;
+}
+
+.user-name {
+  margin: 0.5rem 0 0.2rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #24292f;
+}
+
+.user-email {
+  color: #57606a;
+  font-size: 0.9rem;
+}
+
+.sidebar-stats {
+  margin-top: 2rem;
+  text-align: left;
+  width: 100%;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 1.5rem;
+}
+
+.sidebar-title {
+  font-size: 1.1rem;
+  color: #111827;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  padding-left: 0.5rem;
+}
+
+.stats-list {
+  list-style: none;
+  padding-left: 0.5rem;
+}
+
+.stats-list li {
+  display: flex;
+  align-items: center;
+  font-size: 0.95rem;
+  color: #374151;
+  margin-bottom: 0.8rem;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.dot.green { background-color: grey;}
+.dot.blue { background-color: green; }
+.dot.yellow { background-color: #fbbf24; }
+.dot.red { background-color: #ef4444; }
+
+/* Main Content */
+.github-main {
+  margin-left: 260px;
+  padding: 2rem 3rem;
+  flex: 1;
+  min-height: 100vh;
+}
+
+.github-main h1 {
+  text-align: center;
+  font-size: 3rem;
+  margin-top: 1%;
+}
+
+.User-name{
+  font-size: 3rem;
+}
+.section-title {
+  font-size: 1.5rem;
+  color: #1f2328;
+  margin-bottom: 1.5rem;
+  margin-top: 5%;
+}
+
+.repo-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.repo-card {
+  background-color: #fff;
+  border: 1px solid #d0d7de;
+  padding: 1rem 1.25rem;
+  border-radius: 6px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+  transition: box-shadow 0.2s ease;
+}
+
+.repo-card:hover {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
+}
+
+.repo-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.repo-title {
+  font-size: 1.1rem;
+  color: #0969da;
+  font-weight: 600;
+}
+
+.repo-id {
+  margin-top: 0.5rem;
+  color: #57606a;
+  font-size: 0.88rem;
+}
+
+.status-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 2rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.approved { background-color: #2da44e; }
+.rejected { background-color: #cf222e; }
+.pending { background-color: #dbab09; }
+
+
+.edit-btn {
+  background-color: #2563eb;
+  color: #fff;
+  width: 60%;
+  height: 2rem;
+  margin-top: 4%;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.edit-btn:hover {
+  background-color: #1d4ed8;
+}
+
+.edit-btn:active {
+  transform: scale(0.98);
+  background-color: #1e40af;
+}

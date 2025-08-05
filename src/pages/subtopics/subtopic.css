@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f9fafe;
+  color: #1f2937;
+  margin: 0;
+  padding: 0;
+}
+
+/* Top Image Only */
+.top-card {
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.top-card img {
+  width: 100vw;
+  object-fit: cover;
+  margin-top: 3%;
+  display: block;
+}
+
+.top-card-text {
+  position: static;
+  margin-top: -6%;
+  margin-bottom: 5%;
+  margin-left: 10%;
+  left: 8%;
+  transform: translateY(-50%);
+  color: rgb(253, 76, 76);
+  font-size: 2rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+}
+
+
+/* Contents grid */
+.contents {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  padding: 2rem;
+  max-width: 900px;
+  margin: auto;
+}
+
+.contents div {
+  background-color: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contents div:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.contents h4 {
+  color: #1e40af;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.contents p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #4b5563;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 2rem 0;
+}
+
+.pagination button {
+  background-color: white;
+  color: #2563eb;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.pagination button:hover {
+  background-color: #2563eb;
+  color: white;
+}
+
+.pagination .active {
+  background-color: #2563eb;
+  color: white;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .contents {
+    padding: 1rem;
+  }
+
+  .pagination {
+    flex-wrap: wrap;
+    gap: 0.25rem;
+  }
+}
