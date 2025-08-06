@@ -17,10 +17,9 @@ function App() {
   const location = useLocation();
   const path = location.pathname.toLowerCase().replace(/\/+$/, '');
 
-  const hideFooter =
-    path === '/auth' || path === '/admin' || path === '/adminlogin' || path === '/dashboard';
+  const hideFooter = ['/auth', '/admin', '/adminlogin', '/dashboard'].includes(path);
 
-  const hideNavbar = path === '/admin' || path === '/adminlogin';
+  const hideNavbar = ['/admin', '/adminlogin'].includes(path);
 
   return (
     <div className="app">

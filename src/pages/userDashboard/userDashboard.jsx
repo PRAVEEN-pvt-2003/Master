@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './userDashboard.css';
 import { FaCamera } from 'react-icons/fa';
+import { toast } from 'react-toastify';
+
+import EditProfileModal from '../userDashboard/Editprofile'; 
+
 import User0 from '../../assets/user0.jpg';
 import User1 from '../../assets/user1.png';
 import User2 from '../../assets/user2.png';
 import User3 from '../../assets/user3.png';
 import User4 from '../../assets/user4.png';
-import { toast } from 'react-toastify';
-import { useEffect } from 'react'; 
 
 function UserDashboard() {
   const allImages = {
@@ -15,17 +17,16 @@ function UserDashboard() {
     options: [User1, User2, User3, User4],
   };
 
-    useEffect(() => {
-      const shouldShowToast = sessionStorage.getItem('showToast');
-      if (shouldShowToast === 'true') {
-        toast.success('Login successful!');
-        sessionStorage.removeItem('showAdminToast'); 
-      }
-    }, []);
+  useEffect(() => {
+    const shouldShowToast = sessionStorage.getItem('showToast');
+    if (shouldShowToast === 'true') {
+      toast.success('Login successful!');
+      sessionStorage.removeItem('showToast');
+    }
+  }, []);
 
-
-  const saved = localStorage.getItem('profile');
-  const [selectedImage, setSelectedImage] = useState(saved || allImages.default);
+  const savedProfile = localStorage.getItem('profile');
+  const [selectedImage, setSelectedImage] = useState(savedProfile || allImages.default);
   const [showOptions, setShowOptions] = useState(false);
 
   const handleSelect = (img) => {
@@ -34,10 +35,31 @@ function UserDashboard() {
     setShowOptions(false);
   };
 
+  const storedUser = JSON.parse(localStorage.getItem('userData')) || {};
+  const [isEditing, setIsEditing] = useState(false);
+
+  const [formData, setFormData] = useState({
+    name: storedUser.name || 'User',
+    dob: storedUser.dob || '',
+    city: storedUser.city || 'N/A',
+  });
+
   const user = {
-    name: 'Praveen',
-    email: 'Praveen@example.com',
+    name: formData.name,
+    email: storedUser.email || 'user@example.com',
+    gender: storedUser.gender || 'N/A',
+    city: formData.city,
     profile: selectedImage,
+  };
+
+  const handleSave = (updatedFormData) => {
+    const updatedUser = {
+      ...storedUser,
+      ...updatedFormData,
+    };
+    localStorage.setItem('userData', JSON.stringify(updatedUser));
+    setFormData(updatedFormData);
+    setIsEditing(false);
   };
 
   const schemes = [
@@ -49,11 +71,10 @@ function UserDashboard() {
   ];
 
   const statusCount = {
-    Applied: schemes.filter(s=> s.status === 'Applied').length,
-    Approved: schemes.filter(s => s.status === 'Approved').length,
-    Pending: schemes.filter(s => s.status === 'Pending').length,
-    Rejected: schemes.filter(s => s.status === 'Rejected').length,
-    Total:schemes.length,
+    Applied: schemes.length,
+    Approved: schemes.filter((s) => s.status === 'Approved').length,
+    Pending: schemes.filter((s) => s.status === 'Pending').length,
+    Rejected: schemes.filter((s) => s.status === 'Rejected').length,
   };
 
   return (
@@ -63,6 +84,7 @@ function UserDashboard() {
           <img src={selectedImage} alt="Profile" className="profile-pic" />
           <FaCamera className="pencil-icon" onClick={() => setShowOptions(!showOptions)} />
         </div>
+
         {showOptions && (
           <div className="image-grid">
             {allImages.options.map((img, idx) => (
@@ -78,13 +100,14 @@ function UserDashboard() {
         )}
 
         <h2 className="user-name">{user.name}</h2>
-        <p className="user-email">{user.email}</p>
-        <button className='edit-btn'>Edit Profile</button>
+        <p className="user-Gender">{user.gender}/</p>
+        <p className="user-city">{user.city}</p>
+        <button className="edit-btn" onClick={() => setIsEditing(true)}>Edit Profile</button>
 
         <div className="sidebar-stats">
           <h3 className="sidebar-title">Scheme Status</h3>
           <ul className="stats-list">
-            <li><span className="dot green"></span>Applied: {statusCount.Total}</li>
+            <li><span className="dot green"></span> Applied: {statusCount.Applied}</li>
             <li><span className="dot blue"></span> Approved: {statusCount.Approved}</li>
             <li><span className="dot yellow"></span> Pending: {statusCount.Pending}</li>
             <li><span className="dot red"></span> Rejected: {statusCount.Rejected}</li>
@@ -93,7 +116,8 @@ function UserDashboard() {
       </aside>
 
       <main className="github-main">
-        <h1>Welcome <span className='User-name' style={{ color: '#2563eb' }}>{user.name}</span></h1>
+        <h1>Welcome <span className="User-name" style={{ color: '#2563eb' }}>{user.name}</span></h1>
+
         <h3 className="section-title">Applied Schemes</h3>
         <div className="repo-list">
           {schemes.map((scheme) => (
@@ -109,6 +133,14 @@ function UserDashboard() {
           ))}
         </div>
       </main>
+
+      {isEditing && (
+        <EditProfileModal
+          userData={formData}
+          onClose={() => setIsEditing(false)}
+          onSave={handleSave}
+        />
+      )}
     </div>
   );
 }

@@ -34,6 +34,16 @@ function Admin() {
     'TAX & PUBLIC FINANCE', 'FOOD SAFETY',
   ];
 
+  const mockApplications = [
+  { id: 1, name: "John Doe", scheme_name: "Education Grant", status: "pending" },
+  { id: 2, name: "Jane Smith", scheme_name: "Health Coverage", status: "approved" },
+  { id: 3, name: "Raj Patel", scheme_name: "Women's Safety Program", status: "rejected" },
+  { id: 4, name: "Anita Sharma", scheme_name: "Youth Skill Program", status: "pending" },
+  { id: 5, name: "Kumar Ravi", scheme_name: "Senior Citizen Scheme", status: "pending" },
+  { id: 6, name: "Meena Gupta", scheme_name: "Startup Subsidy", status: "approved" },
+];
+
+
   useEffect(() => {
     const isAdmin = localStorage.getItem('isAdmin');
     const adminUsername = localStorage.getItem('adminUsername');
@@ -138,6 +148,8 @@ function Admin() {
           <li onClick={() => setView('add')}>Add Scheme</li>
           <li onClick={() => setView('schemes')}>Existing Schemes</li>
           <li onClick={() => setView('stats')}>View Statistics</li>
+          <li onClick={() => setView('applicants')}>Applications</li>
+
         </ul>
         <button className="logout-button" onClick={handleLogout}>
           <img src={LogoutImg} alt="logout" className="logout-image" />
@@ -242,6 +254,46 @@ function Admin() {
             <h3>Statistics View Coming Soon</h3>
           </div>
         )}
+
+        {view === 'applicants' && (
+  <div>
+    <h3 className="application-title">Applications</h3>
+    <div className="applicants-container">
+      {mockApplications.length === 0 ? (
+        <p>No applications found.</p>
+      ) : (
+        mockApplications.map((app) => (
+          <div key={app.id} className="application-card">
+            <div className="scheme-card-2">
+              <p><strong>Name:</strong> {app.name}</p>
+              <p><strong>Scheme:</strong> {app.scheme_name}</p>
+              <p><strong>Status:</strong>
+                <span style={{ textTransform: "capitalize", marginLeft: "5px" }}>
+                  {app.status}
+                </span>
+              </p>
+              <div>
+                <button
+                  disabled={app.status === "approved"}
+                  className="edit-button"
+                >
+                  Approve
+                </button>
+                <button
+                  disabled={app.status === "rejected"}
+                  className="delete-button"
+                >
+                  Reject
+                </button>
+              </div>
+            </div>
+          </div>
+        ))
+      )}
+    </div>
+  </div>
+)}
+
       </div>
     </div>
   );

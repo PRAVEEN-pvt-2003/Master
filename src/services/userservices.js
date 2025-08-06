@@ -23,11 +23,11 @@ export async function adminLogin(userid, password) {
 }
 
 // User Signup
-export async function signup(name, email, password) {
+export async function signup(name, email, password,gender, dob, city) {
   const response = await fetch(`${API_BASE_URL}/api/signup/`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ name, email, password }),
+    body: JSON.stringify({ name, email, password,gender, dob, city }),
   });
 
   if (!response.ok) {

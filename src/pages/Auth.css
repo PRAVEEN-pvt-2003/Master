@@ -14,19 +14,22 @@
   height: 100vh;
   width: 100vw;
   position: relative;
+  overflow: hidden;
 }
 
 .auth-card {
   display: flex;
   width: 850px;
+  max-width: 90vw;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
   background-color: #ffffff;
   z-index: 2;
+  max-height: 600px;
 }
 
-.bg-img{
+.bg-img {
   position: fixed;
   inset: 0;
   width: 100%;
@@ -34,7 +37,7 @@
   object-fit: cover;
   z-index: 0;
 }
-/* === LEFT PANEL === */
+
 .auth-side-panel {
   flex: 1;
   background: linear-gradient(135deg, #2563eb, #1d4ed8);
@@ -50,7 +53,6 @@
   width: 280px;
   height: 280px;
   object-fit: contain;
-  background-color: transparent;
   margin-bottom: 20px;
   filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.15));
 }
@@ -58,7 +60,6 @@
 .auth-side-panel h2 {
   font-size: 28px;
   font-weight: 700;
-  margin-bottom: 10px;
   text-align: center;
 }
 
@@ -69,7 +70,6 @@
   opacity: 0.9;
 }
 
-/* === RIGHT PANEL === */
 .auth-form-section {
   flex: 1;
   padding: 3rem 2rem;
@@ -82,8 +82,8 @@
 .auth-form-section h2 {
   font-size: 26px;
   font-weight: 700;
-  margin-bottom: 1rem;
-  color: #1e293b; /* slate-800 */
+  margin-bottom: 0.6rem;
+  color: #1e293b;
   text-align: center;
 }
 
@@ -91,35 +91,58 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 
-.auth-form-section input {
+.auth-form-section input,
+.auth-form-section select {
   width: 90%;
   padding: 1rem;
-  margin: 0.5rem 0;
-  border: 1px solid #cbd5e1; /* gray-300 */
+  margin: 0.3rem 0;
+  border: 1px solid #cbd5e1;
   border-radius: 12px;
-  font-size: 1rem;
+  font-size: 0.8rem;
   background: #f8fafc;
-  color: #0f172a; /* slate-900 */
+  color: #0f172a;
   transition: border 0.3s, background 0.3s;
 }
 
-.auth-form-section input:focus {
+.auth-form-section input:focus,
+.auth-form-section select:focus {
   border-color: #2563eb;
   background-color: #ffffff;
   outline: none;
 }
 
-.auth-form-section button {
+.password-wrapper {
+  position: relative;
   width: 90%;
-  padding: 1rem;
+}
+
+.password-wrapper input {
+  width: 100%;
+  padding-right: 40px;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 20px;
+  top: 53%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 18px;
+  color: #64748b;
+}
+
+.auth-form-section button {
+  width: 80%;
+  padding: 0.7rem;
   margin-top: 1rem;
   border: none;
   border-radius: 12px;
   background-color: #2563eb;
   color: white;
-  font-size: 1rem;
+  font-size: 0.8rem;
   font-weight: 600;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -129,6 +152,7 @@
   background-color: #1d4ed8;
 }
 
+/* === Toggle Link === */
 .toggle-text {
   font-size: 0.95rem;
   margin-top: 1rem;
@@ -152,6 +176,7 @@
   color: #1d4ed8;
 }
 
+/* === Background Effect === */
 .auth-wrapper::before {
   content: '';
   position: absolute;
@@ -159,24 +184,4 @@
   background: radial-gradient(circle at top left, #93c5fd 0%, transparent 70%);
   z-index: 1;
   opacity: 0.2;
-}
-
-.password-wrapper {
-  position: relative;
-  width: 90%;
-}
-
-.password-wrapper input {
-  width: 100%;
-  padding-right: 40px;
-}
-
-.toggle-password {
-  position: absolute;
-  right: 20px;
-  top: 53%;
-  transform: translateY(-50%);
-  cursor: pointer;
-  font-size: 18px;
-  color: #64748b;
 }

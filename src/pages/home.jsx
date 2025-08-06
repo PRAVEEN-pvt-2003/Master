@@ -58,7 +58,7 @@ function Home() {
       </div>
       {/* Categories Section */}
       <section id="categories" className="categories-section">
-        <h2 className="home-title">Find Scheme Bsaed on <br /> Categories</h2>
+        <h2 className="home-title">Find Scheme Based on <br /> Categories</h2>
         <div className="categories-container">
           {categories.map((category) => (
             <div

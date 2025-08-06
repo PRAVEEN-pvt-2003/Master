@@ -74,8 +74,6 @@ body, html, #root {
   letter-spacing: 2px;
 }
 
-/* Navigation */
-
 .nav-links {
   list-style: none;
   width: 100%;
@@ -83,13 +81,13 @@ body, html, #root {
 }
 
 .nav-links li {
-  padding: 14px 25px;
+  padding: 7px 10px;
   font-size: 17px;
   font-weight: 500;
-  border-radius: 15px;
+  border-radius: 10px;
   color: #3a3a3c;
   cursor: pointer;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
   transition: background 0.25s ease, color 0.25s ease;
   box-shadow: inset 0 0 0 0 transparent;
   user-select: none;
@@ -108,8 +106,6 @@ body, html, #root {
   font-weight: 600;
   outline: none;
 }
-
-/* Logout button */
 
 .logout-button {
   margin-top: auto;
@@ -147,8 +143,6 @@ body, html, #root {
   user-select: none;
 }
 
-/* Main content */
-
 .center-content {
   margin-left: 260px;
   padding: 2rem 3rem;
@@ -161,10 +155,6 @@ body, html, #root {
   flex-direction: column;
 }
 
-
-
-/* Form title */
-
 .form-title {
   font-size: 28px;
   font-weight: 600;
@@ -175,8 +165,6 @@ body, html, #root {
   width: 100%;
   text-align: center;
 }
-
-/* Form styling */
 
 .admin-form {
   width: 100%;
@@ -192,8 +180,6 @@ body, html, #root {
   user-select: text;
   box-sizing: border-box;
 }
-
-
 
 .form-input,
 .form-select,
@@ -218,19 +204,13 @@ body, html, #root {
   box-shadow: 0 0 6px #355feb66;
 }
 
-/* Textarea taller */
-
 .form-textarea {
   min-height: 120px;
 }
 
-/* Select placeholder color */
-
 .form-select option[value=""] {
   color: #999999;
 }
-
-/* Submit button */
 
 .form-button {
   background: #355feb;
@@ -251,8 +231,6 @@ body, html, #root {
   box-shadow: 0 12px 40px rgb(42 71 208 / 0.6);
 }
 
-/* Scheme list */
-
 .scheme-list {
   width: 100%;
   max-width: 900px;
@@ -261,8 +239,6 @@ body, html, #root {
   gap: 25px;
   user-select: none;
 }
-
-/* Individual scheme card */
 
 .scheme-card {
   background: #fff;
@@ -282,7 +258,7 @@ body, html, #root {
 }
 
 .existing_scheme{
-  margin-left: 20%;
+  margin-left: 40%;
   margin-bottom: 5%;
   font-size: 2rem;
 }
@@ -335,7 +311,7 @@ body, html, #root {
 .scheme-card button:last-of-type {
   background: #ff3b30;
   color: white;
-  box-shadow: 0 8px 20px rgb(255 59 48 / 0.45);
+  box-shadow: 0 8px 20px rgb(255 59 48 / 0.35);
 }
 
 .scheme-card button:last-of-type:hover {
@@ -438,3 +414,57 @@ body, html, #root {
   color: #2a47d0;
 }
 
+.applicants-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit ,minmax(300px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+.scheme-card-2 {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.scheme-card-2:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.edit-button,
+.delete-button {
+  padding: 8px 16px;
+  margin-top: 10px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.edit-button {
+  background-color: #4caf50;
+  color: white;
+}
+
+.delete-button {
+  background-color: #f44336;
+  color: white;
+}
+
+.edit-button:disabled,
+.delete-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.application-title{
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 500;
+  margin-bottom: 5%;
+}
