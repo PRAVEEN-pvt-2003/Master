@@ -1,92 +1,59 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import './adminlogin.css';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import AdminImage from '../../assets/statsimg.jpg'; 
-import BackGroundImg from '../../assets/microsoft-bg.png'
-import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
-function AdminLogin() {
+const AdminLogin = () => {
   const [userid, setUserid] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
-  const [showPassword, setShowPassword] = useState(false);
 
-  const handleSubmit = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
 
-    if (!userid || !password) {
-      toast.warn('Please enter both User ID and Password');
-      return;
-    }
-
     try {
-      const response = await axios.post('http://localhost:8000/api/admin-login/', {
-        userid,
-        password
+      const response = await axios.post('http://127.0.0.1:8000/api/admin-login/', {
+        userid: userid,
+        password: password,
       });
 
-      if (response.status === 200) { 
-        toast.success('Admin login successful!');
+      if (response.data.success) {
         localStorage.setItem('isAdmin', 'true');
         localStorage.setItem('adminUsername', userid);
-        navigate('/admin');
+        toast.success('Login successful! Redirecting...');
+        navigate('/Admin');
+      } else {
+        toast.error('Invalid credentials');
       }
+    // eslint-disable-next-line no-unused-vars
     } catch (error) {
-      toast.error(
-        error.response?.data?.error || 'Login failed. Please check your credentials.'
-      );
+      toast.error('Something went wrong');
     }
   };
 
   return (
-    <div className="admin-login-wrapper">
-      <img className='admin-bg-img' src={BackGroundImg} alt="img" />
-      <div className="admin-login-card">
-        {/* Left Form */}
-        <div className="admin-login-left">
-          <h2>Admin Login</h2>
-          <form onSubmit={handleSubmit}>
-            <input
-              type="text"
-              name="userid"
-              placeholder="User ID"
-              value={userid}
-              onChange={(e) => setUserid(e.target.value)}
-              required
-            />
-            <div className='admin-pass-wrapper'>
-            <input
-              type={showPassword ? 'text' : 'password'}
-              name="password"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-            <span
-              className="toggle-password"
-              onClick={() => setShowPassword(!showPassword)}
-            >
-              {showPassword ? <FaEyeSlash /> : <FaEye />}
-
-            </span>
-            </div>
-            <button type="submit" className='admin-login-btn'>Login</button>
-          </form>
-        </div>
-
-        {/* Right Image */}
-        <div className="admin-login-right">
-          <img src={AdminImage} alt="Admin illustration" />
-          <h3>Welcome Back, Admin!</h3>
-          <p>Manage schemes, users and content securely from your dashboard.</p>
-        </div>
-      </div>
+    <div className="admin-login-container">
+      <h2>Admin Login</h2>
+      <form onSubmit={handleLogin}>
+        <input
+          type="text"
+          placeholder="Admin Userid"
+          value={userid}
+          onChange={(e) => setUserid(e.target.value)}
+          required
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+        <button type="submit">Login</button>
+      </form>
     </div>
   );
-}
+};
 
 export default AdminLogin;

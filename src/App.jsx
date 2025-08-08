@@ -8,7 +8,7 @@ import AdminLogin from './pages/Admin/adminlogin';
 import Contact from './pages/contact';
 import Login from './pages/Auth';
 import './App.css';
-import ProtectedRoute from './routes/routecomponent';
+import ProtectedRoute from './routes/ProtectedRoute';
 import Subtopics from './pages/subtopics/subtopic';
 import Subtopicdetail from './pages/subtopics/subtopicdetail';
 import UserDashboard from './pages/userDashboard/userDashboard';
@@ -30,7 +30,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/auth" element={<Login />} />
-          <Route path="/dashboard" element={<UserDashboard />} />
+          <Route path="/userdashboard" element={<UserDashboard />} />
           <Route path="/subtopics/:topicId" element={<Subtopics />} />
           <Route path="/detail/:subtopicId" element={<Subtopicdetail />} />
           <Route
@@ -38,7 +38,7 @@ function App() {
             element={
               <ProtectedRoute>
                 <Admin />
-              </ProtectedRoute>
+                </ProtectedRoute>
             }
           />
           <Route path="/adminlogin" element={<AdminLogin />} />

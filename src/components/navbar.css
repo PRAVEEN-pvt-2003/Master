@@ -55,7 +55,7 @@
 .navbar-right span {
   color: var(--primary-color);
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 400;
   position: relative;
   cursor: pointer;
   transition: color 0.3s ease;
@@ -87,7 +87,7 @@
   border: none;
   padding: 8px 18px;
   font-weight: 500;
-  border-radius: 999px;
+  border-radius: 50px;
   cursor: pointer;
   font-size: 14px;
   transition: background-color 0.3s ease, transform 0.2s ease;
