@@ -1,0 +1,261 @@
+
+
+/* ===== Admin Login Page Layout ===== */
+.admin-login-page {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  margin-top: -2%;
+  margin-bottom: -2%;
+}
+
+/* ===== Left Panel ===== */
+.left-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 5%;
+  background-color: #ffffff;
+  text-align: center;
+  position: relative;
+  margin-top: -7%;
+}
+
+/* Logo */
+.top-logo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease;
+}
+.top-logo:hover {
+  transform: scale(1.05);
+}
+
+/* Headings */
+.left-panel h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #1e1e2f;
+  /* margin-bottom: 0.5rem; */
+}
+.subtitle {
+  font-size: 1rem;
+  color: #777;
+  margin-bottom: 2rem;
+}
+
+/* Form */
+.admin-login-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #ddd; /* line under form */
+}
+
+/* Labels & Inputs */
+.admin-login-form label {
+  font-weight: 500;
+  color: #333;
+  text-align: left;
+  font-size: 15px;
+}
+.admin-login-form input {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  padding: 0.85rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  width: 100%;
+  background-color: #fafafa;
+  transition: all 0.3s ease;
+}
+.admin-login-form input:focus {
+  border-color: #6a67ce;
+  box-shadow: 0 0 8px rgba(106,103,206,0.2);
+  outline: none;
+}
+
+/* Password Toggle */
+.admin-password {
+  position: relative;
+}
+.admin-password input {
+  padding-right: 40px;
+}
+.toggle-password {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #666;
+  transition: color 0.3s ease;
+}
+.toggle-password:hover {
+  color: #6a67ce;
+}
+
+.admin-login-form button {
+  position: relative;
+  padding: 0.95rem 2rem 0.95rem 1.5rem;
+  border: none;
+  border-radius: 10px;
+  background-color: #000000;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+}
+.admin-login-form button::after {
+  content: "→";
+  position: absolute;
+  right: 150px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.1rem;
+  transition: transform 0.3s ease;
+}
+.admin-login-form button:hover {
+  background-color: #272728;
+  transform: translateY(-1px);
+}
+.admin-login-form button:hover::after {
+  transform: translateY(-50%) translateX(5px);
+}
+
+/* Secure Access Box */
+.secure-access {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  max-width: 380px;
+  padding: 1rem 1.2rem;
+  background-color: rgba(111, 111, 118, 0.1); /* subtle low-opacity background */
+  border-radius: 10px;
+  position: absolute;
+  margin-bottom: -43rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.shield-icon {
+  font-size: 1.5rem;
+  color: #686771;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.secure-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.secure-text h4 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1e1e2f;
+}
+
+.secure-text p {
+  margin: 0.2rem 0 0 0;
+  font-size: 0.85rem;
+  color: #555;
+  line-height: 1.4;
+}
+
+/* ===== Right Panel ===== */
+.right-panel {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+.right-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 0;
+}
+
+/* Info Box */
+.info-box {
+  position: relative;
+  z-index: 1;
+  color: white;
+  max-width: 500px;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+.info-box h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+.info-box p {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+.info-box ul {
+  list-style: none;
+  padding-left: 1.2rem;
+  margin: 0;
+}
+.info-box li {
+  position: relative;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+  padding-left: 1.8rem;
+}
+.info-box li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #00ac39;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 1024px) {
+  .admin-login-page {
+    flex-direction: column;
+    height: auto;
+  }
+  .left-panel,
+  .right-panel {
+    width: 100%;
+    padding: 2rem;
+  }
+  .secure-access {
+    position: relative;
+    transform: none;
+    bottom: 0;
+    margin-top: 2rem;
+  }
+  .info-box {
+    max-width: 100%;
+  }
+}

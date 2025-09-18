@@ -1,5 +1,5 @@
 import ContactImg from '../assets/contact-img.png'
-import './contact.css';
+import '../Styles/contact.css';
 
 function Contact() {
     return (
@@ -20,7 +20,7 @@ function Contact() {
 
                 <ul className="contact-details">
                     <li><span>📧 Email:</span> support@SchemeFinder.in</li>
-                    <li><span>📱 Phone:</span> +91-XXXX-XXX (Toll-Free)</li>
+                    <li><span>📱 Phone:</span> +91-9876543210 (Toll-Free)</li>
                     <li><span>🌐 Website:</span> www.SchemeFinder.in</li>
                     <li><span>🔗 Follow us on:</span> Facebook | Twitter | YouTube</li>
                 </ul>

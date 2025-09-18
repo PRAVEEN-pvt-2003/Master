@@ -1,9 +1,15 @@
-import React from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate } from "react-router-dom";
 
-const ProtectedRoute = ({ children }) => {
-  const isAdmin = localStorage.getItem('isAdmin') === 'true';
-  return isAdmin ? children : <Navigate to="/adminlogin" replace />;
-};
+// Protect user-only pages
+export function UserProtectedRoute({ children }) {
+  const userToken = localStorage.getItem("userToken");
+  if (!userToken) return <Navigate to="/auth" replace />;
+  return children;
+}
 
-export default ProtectedRoute;
+// Protect admin-only pages
+export function AdminProtectedRoute({ children }) {
+  const adminToken = localStorage.getItem("adminToken");
+  if (!adminToken) return <Navigate to="/adminlogin" replace />;
+  return children;
+}

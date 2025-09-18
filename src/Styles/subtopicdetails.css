@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+/* Container */
+.scheme-detail-page {
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 30px;
+  font-family:'Poppins', sans-serif ;
+  line-height: 1.7;
+  color: #333;
+}
+
+/* Title */
+.scheme-title {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #364567;
+  text-align: center;
+}
+
+/* Paragraph details */
+.scheme-detail-page p {
+  font-size: 16px;
+  margin: 12px 0;
+}
+
+.scheme-detail-page h3{
+  color: #2e5fd0;
+}
+/* Apply Section */
+.apply-section {
+  margin-top: 30px;
+}
+
+.apply-section h3 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: #2e5fd0;
+}
+
+/* Bullet Points */
+.apply-section ul {
+  list-style-type: disc;   /* standard round bullets */
+  padding-left: 25px;      /* proper indentation */
+  margin-top: 10px;
+}
+
+.apply-section ul li {
+  font-size: 16px;
+  margin-bottom: 10px;
+  line-height: 1.6;
+  color: #444;
+  text-align: justify;     /* align text neatly in lines */
+  word-wrap: break-word;   /* prevent long words overflow */
+}
+
+/* Buttons Section */
+.scheme-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 50%;
+  margin-top: 70px;
+}
+
+.apply-btn {
+  padding: 12px 24px;
+  background-color: #4caf50;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.apply-btn:hover {
+  background-color: #45a049;
+}
+
+.back-btn {
+  padding: 12px 24px;
+  background-color: #f44336;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.back-btn:hover {
+  background-color: #d32f2f;
+}
+
+.apply-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.popup-card {
+  background: #fff;
+  padding: 30px 40px;
+  border-radius: 15px;
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  position: relative;
+}
+
+.popup-card h2 {
+  margin-bottom: 20px;
+}
+
+.popup-card button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.dashboard-btn {
+  background-color: #4caf50;
+  color: white;
+}
+
+.popup-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #333;
+}
+

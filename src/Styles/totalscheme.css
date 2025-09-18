@@ -1,0 +1,326 @@
+/* ================================
+   TOTAL SCHEMES PAGE
+================================ */
+.total-schemes-page {
+  font-family: "Poppins", sans-serif;
+  background: #f9fafc;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: #111;
+  position: relative;
+  z-index: 1;
+}
+
+/* ================================
+   HERO SECTION
+================================ */
+.hero-banner {
+  position: relative;
+  width: 100vw;
+  height: 340px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 0;
+}
+
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(65%);
+  z-index: 0;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #3a7bd5, #3ad5aa);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  text-align: center;
+  padding: 0 20px;
+  z-index: 1;
+  opacity: 0.9;
+}
+
+.hero-overlay h1 {
+  font-size: 2.6rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+
+.hero-overlay p {
+  font-size: 1.1rem;
+  opacity: 0.95;
+  max-width: 700px;
+}
+
+/* ================================
+   SEARCH & FILTER
+================================ */
+.search-wrapper {
+  width: 100%;
+  height: 20vh;
+  display: flex;
+  justify-content: center;
+  margin-top: -60px; /* slightly overlapping hero */
+  position: relative;
+  z-index: 2; /* bring above hero */
+}
+
+.search-filter-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #fff;
+  padding: 16px 24px;
+  border-radius: 14px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); /* stronger shadow */
+  width: 90%;
+  max-width: 1100px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 2;
+}
+
+.search-filter-card input {
+  flex: 1 1 200px;
+  padding: 12px 16px;
+  border: 1px solid #ddd; /* subtle border */
+  outline: none;
+  font-size: 1rem;
+  border-radius: 8px;
+  background: #f5f6f8;
+  transition: 0.3s;
+}
+
+.search-filter-card input:focus {
+  border-color: #3a7bd5;
+}
+
+.search-filter-card select {
+  flex: 0 0 180px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.search-filter-card select:hover,
+.search-filter-card select:focus {
+  border-color: #3a7bd5;
+}
+
+.showing-count {
+  width: 90%;
+  max-width: 900px;
+  margin: 14px auto 0;
+  font-size: 0.95rem;
+  color: #555;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: 1%;
+}
+
+/* ================================
+   SCHEME CARDS
+================================ */
+.scheme-cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  padding: 40px 7%;
+}
+
+.scheme-card {
+  background: #fff;
+  padding: 22px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.scheme-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.15);
+}
+
+.scheme-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.scheme-badge {
+  font-size: 0.7rem;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-weight: 500;
+  color: #fff;
+  background: #6c9ce0;
+}
+
+.scheme-date {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.scheme-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #111;
+}
+
+.scheme-card p {
+  font-size: 0.9rem;
+  margin-bottom: 6px;
+  color: #444;
+  line-height: 1.5;
+}
+
+.scheme-eligibility {
+  font-weight: 500;
+  margin-top: 8px;
+  font-size: 0.8rem;
+  color: #000;
+}
+.scheme-eligibility p{
+  font-size: 0.8rem;
+  font-weight: 300;
+}
+
+/* ================================
+   SCHEME CARD BUTTON
+================================ */
+.scheme-card button {
+  margin-top: -8%;
+  margin-bottom: -4%;
+  padding: 10px 18px;
+  border-radius: 8px;
+  border: none;
+  background: rgba(255, 255, 255, 0.2); /* low opacity background */
+  color: #000000;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-left: 6%;
+  width: 90%;
+  backdrop-filter: blur(3px);
+  height: 40px;
+}
+
+.scheme-card button:hover {
+  background: rgba(61, 181, 237, 0.2); /* slightly stronger on hover */
+  transform: translateY(-2px);
+}
+
+/* ================================
+   DIVIDER LINE
+================================ */
+.scheme-card-divider {
+  width: 100%;
+  height: 1px;
+  background: #ddd;
+  margin: 16px 0; /* space between content and button */
+}
+
+
+/* ================================
+   PAGINATION
+================================ */
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 40px 0 60px;
+}
+
+.pagination button {
+  padding: 9px 16px;
+  border-radius: 20px;
+  border: 1px solid #ddd;
+  background: #fff;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 0.9rem;
+}
+
+.pagination button.active,
+.pagination button:hover:not(:disabled) {
+  background: #3a7bd5;
+  color: #fff;
+  border-color: #3a7bd5;
+}
+
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ================================
+   RESPONSIVE
+================================ */
+@media (max-width: 1024px) {
+  .hero-overlay h1 { font-size: 2.4rem; }
+  .hero-overlay p { font-size: 1.05rem; }
+}
+
+@media (max-width: 768px) {
+  .hero-overlay h1 { font-size: 2rem; }
+  .hero-overlay p { font-size: 1rem; }
+  .search-filter-card {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  .scheme-cards-container { padding: 20px 5%; gap: 18px; }
+}
+
+@media (max-width: 480px) {
+  .hero-overlay h1 { font-size: 1.6rem; }
+  .hero-overlay p { font-size: 0.95rem; }
+}
+
+.search-input-wrapper {
+  position: relative;
+  flex: 1;
+}
+
+.search-input-wrapper input {
+  width: 100%;
+  padding: 10px 12px 10px 36px; /* left padding for icon */
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  background: #f5f6f8;
+  font-size: 1rem;
+}
+
+.search-input-wrapper .search-icon {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  color: #999;
+  font-size: 1rem;
+}

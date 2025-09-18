@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:wght@400;500;600;700;800;900&display=swap');
+
+#contact{
+  scroll-margin-top: 100px;
+}
+.contact-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 60px auto;
+  padding: 20px;
+  gap: 40px;
+  flex-wrap: wrap;
+  scroll-margin-top: 90px;
+  margin-bottom: -8%;
+}
+
+.contact-section {
+  flex: 1;
+  min-width: 320px;
+}
+
+.contact-section h1 {
+    font-family: "Poppins", sans-serif;
+    font-size: 36px;
+    color: #2e2e9b;
+    font-weight: bold;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.contact-section p {
+  font-size: 17px;
+  color: #333;
+  line-height: 1.7;
+  margin-bottom: 25px;
+  font-family: "Poppins", sans-serif;
+}
+
+.office-address {
+  font-size: 16px;
+  color: #444;
+  background-color: #f9f9f9;
+  padding: 15px 20px;
+  border-left: 5px solid #1c1c3a;
+  margin-bottom: 20px;
+  white-space: pre-line;
+  font-family: "Poppins", sans-serif;
+}
+
+.contact-details {
+  list-style: none;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+.contact-details li {
+  margin-bottom: 14px;
+  font-size: 16px;
+  color: #555;
+}
+
+.contact-details li span {
+  font-weight: bold;
+  color: #1c1c3a;
+}
+
+.contact-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-image img {
+  width: 100%;
+  object-fit: cover;
+}
+
+@media screen and (max-width: 768px) {
+  .contact-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .contact-section {
+    width: 100%;
+  }
+
+  .contact-image {
+    margin-top: 20px;
+  }
+}

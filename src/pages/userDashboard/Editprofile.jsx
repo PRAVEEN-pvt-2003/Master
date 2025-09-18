@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
-import './Editprofile.css';
+import '../../Styles/Editprofile.css';
 
 const EditProfileModal = ({ onClose, onSave, userData }) => {
   const [name, setName] = useState(userData.name || '');
   const [dob, setDob] = useState(userData.dob || '');
   const [city, setCity] = useState(userData.city || '');
+  const [gender, setGender] = useState(userData.gender || '');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSave({ name, dob, city });
+    onSave({ name, dob,gender, city });
     onClose();
   };
 
@@ -30,6 +31,17 @@ const EditProfileModal = ({ onClose, onSave, userData }) => {
             onChange={(e) => setDob(e.target.value)}
             required
           />
+          <select 
+          className="dropdown-select"
+            value={gender} 
+            onChange={(e) => setGender(e.target.value)} 
+            required
+          >
+            <option value="">Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select>
           <input
             type="text"
             placeholder="City"

@@ -1,86 +1,115 @@
-import { Link, useNavigate, useLocation } from 'react-router-dom';
-import './Navbar.css';
-import { useEffect, useState } from 'react';
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import SearchIcon from '../assets/search-icon.png'
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import "../Styles/navbar.css";
+import { useEffect, useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import WebLogo from "../assets/web-logo.png";
 
 function Navbar() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(
+    !!localStorage.getItem("userToken") || !!localStorage.getItem("adminToken")
+  );
+
+  const [activeSection, setActiveSection] = useState("home");
   const navigate = useNavigate();
   const location = useLocation();
 
   useEffect(() => {
-    const loggedIn = localStorage.getItem('isLoggedIn') === 'true';
-    setIsLoggedIn(loggedIn);
+    const checkLoginStatus = () => {
+      setIsLoggedIn(!!localStorage.getItem("userToken") || !!localStorage.getItem("adminToken"));
+    };
 
-    const shouldShowToast = sessionStorage.getItem('showLoginToast') === 'true';
+    checkLoginStatus();
+    window.addEventListener("loginStatusChanged", checkLoginStatus);
 
-    if (loggedIn && shouldShowToast) {
-      toast.success('Signed in successfully!', { toastId: 'login-toast' });
-      sessionStorage.removeItem('showLoginToast');
-    }
+    return () => window.removeEventListener("loginStatusChanged", checkLoginStatus);
   }, []);
 
-  useEffect(() => {
-    const hash = window.location.hash.substring(1);
-    if (hash) {
-      const section = document.getElementById(hash);
-      if (section) {
-        setTimeout(() => {
-          section.scrollIntoView({ behavior: 'smooth' });
-        }, 100);
-      }
-    }
-  }, [location]);
-
   const handleLogout = () => {
-    localStorage.removeItem('isLoggedIn');
-    localStorage.removeItem('user');
+    localStorage.removeItem("userToken");
+    localStorage.removeItem("adminToken");
+    localStorage.removeItem("isAdmin");
+    localStorage.removeItem("username");
     setIsLoggedIn(false);
-    toast.info('Logged out successfully!');
-    navigate('/');
+    toast.info("Logged out successfully!");
+    navigate("/");
+    window.dispatchEvent(new Event("loginStatusChanged"));
   };
 
   const scrollToSection = (id) => {
-    if (location.pathname !== '/') {
-      navigate('/#' + id);
+    setActiveSection(id);
+    if (location.pathname !== "/") {
+      navigate("/#" + id);
     } else {
       const section = document.getElementById(id);
-      if (section) {
-        section.scrollIntoView({ behavior: 'smooth' });
-      }
+      if (section) section.scrollIntoView({ behavior: "smooth" });
     }
   };
+
+  useEffect(() => {
+    const sections = ["home", "categories", "progress", "about-us", "contact"];
+
+    const handleScroll = () => {
+      let current = "home";
+      sections.forEach((id) => {
+        const section = document.getElementById(id);
+        if (section) {
+          const sectionTop = section.offsetTop - 80;
+          if (window.scrollY >= sectionTop) {
+            current = id;
+          }
+        }
+      });
+      setActiveSection(current);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
 
   return (
     <>
       <nav className="navbar">
-        
         <div className="navbar-left">
-          <img className='search-img' src={SearchIcon} alt="Search-image" />
+          <img className="search-img" src={WebLogo} alt="Search" />
           <span>Scheme Finder</span>
+        </div>
+        <div className="navbar-center">
+          <span 
+            className={activeSection === "home" ? "active" : ""}
+            onClick={() => scrollToSection("home")} >Home</span>
+
+          <span 
+            className={activeSection === "categories" ? "active" : ""}
+            onClick={()=>scrollToSection("categories")}>Categories</span>
+
+          <span 
+            className={activeSection === "progress" ? "active" : ""}
+            onClick={()=>scrollToSection("progress")} >How it works</span>
+
+          <span 
+            className={activeSection === "about-us" ? "active" : ""}
+            onClick={() => scrollToSection("about-us")} >About us</span>
+
+          <span 
+            className={activeSection === "contact" ? "active" : ""}
+            onClick={() => scrollToSection("contact")} >Contact</span>
           </div>
-        <div className="navbar-right">
-          <span onClick={() => scrollToSection('home')} style={{ cursor: 'pointer' }}>
-            Home
-          </span>
-          <span onClick={() => scrollToSection('about-us')} style={{ cursor: 'pointer', marginLeft: '20px' }}>
-            About
-          </span>
-          <span onClick={() => scrollToSection('contact')} style={{ cursor: 'pointer', marginLeft: '20px' }}>
-            Contact
-          </span>
+
+          <div className="navbar-right">
           {isLoggedIn ? (
             <>
-              <Link to="/dashboard" style={{ marginLeft: '20px', textDecoration: 'none', color: 'black' }}>
-                <span>Dashboard</span>
+              <Link to="/userdashboard" style={{ marginLeft: "20px", textDecoration: "none", color: "black" }}>
+                <span
+                className={`sidebar-link ${activeSection === "userdashboard" ? "active" : ""}`}
+                 onClick={() => scrollToSection("userdashboard")}>Dashboard</span>
               </Link>
-              <button onClick={handleLogout} style={{ marginLeft: '20px' }}>Logout</button>
+              <button onClick={handleLogout} style={{ marginLeft: "20px" }}>Logout</button>
             </>
           ) : (
             <Link to="/auth">
-              <button style={{ marginLeft: '20px' }}>Sign In</button>
+              <button style={{ marginLeft: "20px" }}>Sign In</button>
             </Link>
           )}
         </div>

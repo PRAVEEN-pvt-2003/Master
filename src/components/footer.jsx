@@ -1,5 +1,5 @@
 import { FaLinkedin, FaFacebook, FaXTwitter, FaInstagram } from 'react-icons/fa6';
-import './footer.css';
+import '../Styles/footer.css';
 import digilocker from '../assets/digilocker.jpeg';
 import digitalindia from '../assets/digitalindia.jpg';
 import umang from '../assets/umang.png';
